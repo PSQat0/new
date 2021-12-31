@@ -1,4 +1,5 @@
 let container=document.getElementById("container");
+let selectColor="transparent";
 
 //function creates div squares
 function createSquare(){
@@ -28,6 +29,7 @@ function createCanvas(rows, columns){
              container.appendChild(createSquare());
          }
      }
+     colorPal();
      hoverColor();
      
 
@@ -37,9 +39,10 @@ function createCanvas(rows, columns){
 function hoverColor(){
     
     let cells=document.querySelectorAll(".created");
+    
     cells.forEach(i=>{
-        i.addEventListener('mouseenter',()=>{
-           i.style.backgroundColor="red";
+        i.addEventListener('click',()=>{
+           i.style.backgroundColor=selectColor;
 
 
 
@@ -51,6 +54,47 @@ function hoverColor(){
     });
 
 }
+//select color
+function colorPal(){
+    let  pallette=document.getElementById("colors");
+    
+    const colors=["red","green","blue","yellow","pink","white","black"];
+    pallette.style.setProperty('grid-template-columns',`repeat(${colors.length},1fr)`)
+    const color=(col)=>{
+        let c=document.createElement("div");
+        c.id=col;
+        c.className="color";
+        c.style.padding="5%";
+        c.style.backgroundColor=col;
+        return c
+
+
+    }
+    
+  
+    for(let i=0; i<colors.length; i++){
+        
+        
+        pallette.appendChild(color(colors[i]));
+    }
+    let v=document.querySelectorAll(".color");
+    v.forEach(e=>{
+        e.addEventListener("click",()=>{
+            selectColor=e.id;
+
+
+        })
+    })
+   
+    
+    
+
+    
+}
+
+
+
+
 
 
 //function clears the screen and asks for the size of a new one
@@ -69,9 +113,12 @@ function clearScreen(){
         let columns=prompt("columns");
         let rows=prompt("rows");
         createCanvas(rows,columns);
+        
+    let c=document.querySelectorAll(".created");
+    c.forEach(e=>{
+        e.style.backgroundColor="transparent";
+    })
        
-        
-        
     })
 
 
