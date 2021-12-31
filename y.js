@@ -132,7 +132,7 @@ function clearScreen(){
         }
         
         
-    let c=document.querySelectorAll(".created");
+    
     
     
        
