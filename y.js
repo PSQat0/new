@@ -35,7 +35,7 @@ function createCanvas(rows, columns){
 
 //change color on hover
 function hoverColor(){
-    let click=false;
+    
     let cells=document.querySelectorAll(".created");
     cells.forEach(i=>{
         i.addEventListener('mouseenter',()=>{
