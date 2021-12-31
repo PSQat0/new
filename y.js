@@ -6,18 +6,20 @@ function createSquare(){
     addedDiv.style.backgroundColor='red';
     
     addedDiv.style.margin='0';
-    addedDiv.style.height="20px";
-    addedDiv.style.maxWidth="92px";
     
-    addedDiv.style.textAlign="center";
+    addedDiv.textContent="";
+    addedDiv.style.padding="20px";
     
     return addedDiv;
 }
 //function creates a grid of divs with specified amount of rows and columns 
+
+
 function createCanvas(rows, columns){
     container.style.setProperty(
         'grid-template-columns',`repeat(${columns},1fr)`
     );
+    container.style.padding="10px"
      for(let i=0; i<columns; i++){
          for(let j=0; j<rows; j++){
              container.appendChild(createSquare());
@@ -25,5 +27,6 @@ function createCanvas(rows, columns){
      }
 
 }
-createCanvas(15,15);
+createCanvas(16,16)
+
 
