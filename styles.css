@@ -3,6 +3,6 @@ body{
 }
 .container{
     display: grid;
-    
+    margin: 0;
     
 }
