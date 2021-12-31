@@ -1,6 +1,7 @@
 let container=document.getElementById("container");
 let selectColor="transparent";
-
+clearScreen();
+colorPal();
 //function creates div squares
 function createSquare(){
     let addedDiv=document.createElement("div");
@@ -19,17 +20,25 @@ function createSquare(){
 //function creates a grid of divs with specified amount of rows and columns 
 
 
-function createCanvas(rows, columns){
+function createCanvas(columns,rows){
     container.style.setProperty(
         'grid-template-columns',`repeat(${columns},1fr)`
+        
     );
+    container.style.setProperty(
+        'grid-template-rows',`repeat(${rows},1fr)`
+        
+    );
+    
    
      for(let i=0; i<columns; i++){
+        
          for(let j=0; j<rows; j++){
+             
              container.appendChild(createSquare());
          }
      }
-     colorPal();
+     
      hoverColor();
      
 
@@ -109,19 +118,26 @@ function clearScreen(){
     top.appendChild(reset);
     reset.addEventListener("click",()=>{
         
-
+        container.innerHTML='';
         let columns=prompt("columns");
         let rows=prompt("rows");
-        createCanvas(rows,columns);
+        if(columns>100 || rows>100){
+           alert("too big")
+           columns=0;
+           rows=0;
+        }else{
+            createCanvas(columns,rows);
+        
+        
+        }
+        
         
     let c=document.querySelectorAll(".created");
-    c.forEach(e=>{
-        e.style.backgroundColor="transparent";
-    })
+    
+    
        
     })
 
 
 }
-clearScreen();
-createCanvas(16,16);
+
